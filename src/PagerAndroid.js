@@ -46,7 +46,6 @@ export default class PagerAndroid<T: *> extends React.Component<Props<T>> {
 
   _pageChangeCallabck: any;
   _viewPager: ?ViewPagerAndroid;
-  _isIdle: boolean = true;
   _currentIndex = 0;
 
   _getPageIndex = (index: number) =>
@@ -69,7 +68,7 @@ export default class PagerAndroid<T: *> extends React.Component<Props<T>> {
   };
 
   _handlePageChange = (index: number, animated?: boolean) => {
-    if (this._isIdle && this._currentIndex !== index) {
+    if (this._currentIndex !== index) {
       this._setPage(index, animated);
       this._currentIndex = index;
     }
@@ -89,8 +88,6 @@ export default class PagerAndroid<T: *> extends React.Component<Props<T>> {
   };
 
   _handlePageScrollStateChanged = (e: PageScrollState) => {
-    this._isIdle = e === 'idle';
-
     let nextIndex = this._currentIndex;
 
     const nextRoute = this.props.navigationState.routes[nextIndex];
