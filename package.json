@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "@expo/vector-icons": "^6.3.1",
+    "@react-native-community/viewpager": "^1.1.7",
     "babel-jest": "^22.4.4",
     "babel-preset-react-native": "^4.0.0",
     "enzyme": "3.3.0",
@@ -56,6 +57,7 @@
     "react-test-renderer": "16.3.1"
   },
   "peerDependencies": {
+    "@react-native-community/viewpager": "^1.1.7",
     "react": "*",
     "react-native": "*"
   },
