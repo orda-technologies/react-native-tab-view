@@ -2,15 +2,8 @@
 
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import {
-  TouchableNativeFeedback,
-  TouchableOpacity,
-  Platform,
-  View,
-} from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import type { ViewStyleProp } from 'react-native/Libraries/StyleSheet/StyleSheet';
-
-const LOLLIPOP = 21;
 
 type Props = {
   onPress: () => mixed,
@@ -37,23 +30,12 @@ export default class TouchableItem extends React.Component<Props> {
   };
 
   render() {
-    const { style, pressOpacity, pressColor, borderless, ...rest } = this.props;
+    const { style, pressOpacity, ...rest } = this.props;
 
-    if (Platform.OS === 'android' && Platform.Version >= LOLLIPOP) {
-      return (
-        <TouchableNativeFeedback
-          {...rest}
-          background={TouchableNativeFeedback.Ripple(pressColor, borderless)}
-        >
-          <View style={style}>{React.Children.only(this.props.children)}</View>
-        </TouchableNativeFeedback>
-      );
-    } else {
-      return (
-        <TouchableOpacity {...rest} style={style} activeOpacity={pressOpacity}>
-          {this.props.children}
-        </TouchableOpacity>
-      );
-    }
+    return (
+      <TouchableOpacity {...rest} style={style} activeOpacity={pressOpacity}>
+        {this.props.children}
+      </TouchableOpacity>
+    );
   }
 }
